@@ -12,6 +12,7 @@ const NavbarComponent = () => {
           >
             <img
               className="pl-10"
+              //
               src="https://www.legend.com.kh/_ipx/s_117x44/legend-cinema-logo.png"
               alt="Logo"
             />
@@ -41,7 +42,7 @@ const NavbarComponent = () => {
                 </li>
               </ul>
             </div>
-            <div className="search__input border-[1px] border-solid bg-white border-rgray-200  flex flex-row items-center gap-5 p-1 mr-5 rounded-[10px]">
+            <div className="search__input  transition duration-300 ease-in-out hover:scale-105 border-[1px] border-solid bg-white border-rgray-200  flex flex-row items-center gap-5 p-1 mr-5 rounded-[10px]">
               {/* <label htmlFor="inputId">search</label> */}
               <input
                 type="text"
@@ -53,12 +54,6 @@ const NavbarComponent = () => {
           </div>
         </div>
       </nav>
-      <img
-        className="brightness-50 "
-        src="https://puui.wetvinfo.com/vcover_hz_pic/0/2knhnaakii18oxj1683882661123/0?imageMogr2/thumbnail/600x%7CimageMogr2/thumbnail/600x"
-        alt=""
-      />
-    
     </div>
   );
 };

@@ -1,34 +1,40 @@
-import './globals.css'
+import "./globals.css";
 import CardStoryComponent from "@/components/CardStoryComponent";
-import { getAllStoryService,getStoryByTypeService } from "./services/story.service";
+import { getAllStoryService } from "./services/story.service";
 
-export default async function Movive({ children }) {
+export default async function HomePage({ children }) {
+  const allMovie = await getAllStoryService();
+  const genres = Array.from(
+    new Set(allMovie.payload.map((movie) => movie?.genre))
+  );
 
-    const allMovie = await getAllStoryService();
-    const action = await getStoryByTypeService("Action")
-    const brotith = await getStoryByTypeService("drama")
-    const hollywood = await getStoryByTypeService("hollywood")
-      return (
-        <main>
-          <div className="bg-red-800 w-full">
-          <div className="p-10">
-            <h1 className="mb-5 font-bold text-3xl text-white">All Story</h1>
-            <CardStoryComponent movieData={allMovie} />
-          </div>
-          <div className="p-10">
-            <h1 className="mb-5 font-bold text-3xl text-white">Action Movie</h1>
-            <CardStoryComponent movieData={action} />
-          </div>
-          <div className="p-10">
-            <h1 className="mb-5 font-bold text-3xl text-white">Drama Movie</h1>
-            <CardStoryComponent movieData={brotith} />
-          </div>
-          <div className="p-10">
-            <h1 className="mb-5 font-bold text-3xl text-white">Hollywood</h1>
-            <CardStoryComponent movieData={hollywood} />
-          </div>
-          
+  return (
+    <main>
+      <img
+        className="brightness-50 "
+        src="https://puui.wetvinfo.com/vcover_hz_pic/0/2knhnaakii18oxj1683882661123/0?imageMogr2/thumbnail/600x%7CimageMogr2/thumbnail/600x"
+        alt=""
+      />
+      <div></div>
+      <div className="bg-red-800 w-full p-10">
+        <div className="mb-5">
+          <h1 className="mb-5 font-bold text-2xl text-white">All Story</h1>
+          <CardStoryComponent movieData={allMovie.payload} />
         </div>
-        </main>
-      )
-    }
+        {genres.map((genre, index) => (
+          <div key={genre} className="mb-5">
+            <h2 className="mb-5 font-bold text-2xl text-white">
+              {genre} Movie &gt;
+            </h2>
+            <CardStoryComponent
+              genre={genre}
+              movieData={allMovie.payload.filter(
+                (movie) => movie.genre === genre
+              )}
+            />
+          </div>
+        ))}
+      </div>
+    </main>
+  );
+}
