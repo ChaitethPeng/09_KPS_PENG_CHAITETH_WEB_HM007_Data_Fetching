@@ -16,7 +16,7 @@ export default async function HomePage({ children }) {
         alt=""
       />
       <div></div>
-      <div className="bg-red-800 w-full p-10">
+      <div className="bg-red-900 w-full p-10">
         <div className="mb-5">
           <h1 className="mb-5 font-bold text-2xl text-white">All Story</h1>
           <CardStoryComponent movieData={allMovie.payload} />
